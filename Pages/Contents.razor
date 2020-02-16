@@ -1,0 +1,23 @@
+@page "/contents"
+
+<ul>
+    @foreach (var chapter in Chapters)
+    {
+        <li>@chapter</li>
+    }
+</ul>
+
+@code 
+{
+    private List<string> Chapters => new List<string>
+    {
+        "Blazor WebAssembly и Blazor Server",
+        "WebAssembly (wasm)",
+        "Blazor WebAssembly",
+        "Компоненты",
+        "Жизненный цикл компонентов",
+        "Взаимодействие с Javascript",
+        "Крутые ништяки",
+        "Релиз"
+    };
+}
