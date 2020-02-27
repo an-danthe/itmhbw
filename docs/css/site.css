@@ -177,7 +177,7 @@ app {
     }
 
     .sidebar .collapse {
-        /* Never collapse the sidebar for wide screens */
+     
         display: block;
     }
 }
@@ -193,4 +193,19 @@ app {
 
 .banner .btn {
     color: white;
+}
+
+.pager-items {
+    list-style-type: none;
+}
+
+.pager-item {
+    color: green;
+    cursor: pointer;
+    display: inline;
+}
+
+.pager-item.active {
+    font-weight: bold;
+    cursor: default;
 }
