@@ -2,22 +2,22 @@
 
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col text-left">
             <button type="button" style="width: 100px" class="btn btn-dark" @onclick="PreviousItem">Сюда</button>
         </div>
         <div class="col-8">
             <div class="row">
-                <div class="col">
+                <div class="col text-center">
                     <Navigation @ref="_navigation" Items="Items" OnItemChanged="SetDefaultItem" />
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col text-right">
             <button type="button" style="width: 100px" class="btn btn-dark" @onclick="NextItem">Туда</button>
         </div>
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col" style="margin-top: 50px;">
             @ShowCurrentComponent()
         </div>
     </div>
