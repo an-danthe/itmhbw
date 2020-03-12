@@ -1,0 +1,37 @@
+<PageTitle Title="Обработка ошибок в Blazor" />
+
+<div>
+    <p>
+        <button class="btn btn-dark" @onclick="ThrowException">Throw exception</button>
+        <button class="btn btn-dark" @onclick="HandleException">Handle exception</button>
+    </p>
+</div>
+
+@if (_exception != null)
+{
+    <p>
+        Handled exception: @_exception.Message
+    </p>
+}
+
+@code
+{
+    private Exception _exception;
+
+    private void ThrowException()
+    {
+        throw new Exception("УЖАСНО КОВАРНАЯ ОШИБКА");
+    }
+
+    private void HandleException()
+    {
+        try
+        {
+            ThrowException();
+        }
+        catch (Exception ex)
+        {
+            _exception = ex;
+        }
+    }
+}

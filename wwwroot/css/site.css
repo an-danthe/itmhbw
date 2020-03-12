@@ -225,3 +225,25 @@ app {
     font-size: 24px;
     line-height: 1.7em;
 }
+
+.normal-font {
+    font-size: 1rem;
+    line-height: 1.5em;
+}
+
+.pseudo-link-invisible {
+    cursor: pointer;
+}
+
+.list-of-spoilers > li {
+    padding-left: 8px;
+}
+
+.list-of-spoilers > li.plus {
+    list-style-type: '+';
+}
+
+.list-of-spoilers > li.minus {
+    list-style-type: '-';
+}
+

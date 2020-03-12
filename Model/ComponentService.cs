@@ -11,13 +11,13 @@ namespace itmhbw.Model
             var list = new List<Type>
             {
                 typeof(Greeting),
-                typeof(WhatIsBlazor),
-                typeof(Advantages),
+                typeof(BlazorIntro),
                 typeof(ComponentPhys),
-                typeof(ComponentLife),
+                typeof(ComponentLifeCycle),
                 typeof(ComponentCan),
                 typeof(ComponentDI),
                 typeof(ComponentSpread),
+                typeof(BlazorErrors),
                 typeof(BlazorProjectIs),
                 typeof(BlazorInitialization),
                 typeof(Ending)

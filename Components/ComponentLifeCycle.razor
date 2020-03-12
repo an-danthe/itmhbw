@@ -1,0 +1,106 @@
+@using System.Collections.Generic
+
+<PageTitle Title="Компонент. Жизненный цикл" />
+
+<ul class="big-font list-of-spoilers">
+    @foreach (var item in InnerItems)
+    {
+        string cssListStyle = item.ShowNote ? "minus" : "plus";
+
+        <li class="pseudo-link-invisible @cssListStyle" @onclick="e => ShowNote(item.Name)">
+            @item.Name 
+            @(new MarkupString(item.ShowAsync ? $"<span style=\"color: #ccc\">Async</span>" : ""))
+            @(new MarkupString(item.ShowNote ? $"<p class=\"normal-font\">{item.Note}</p>" : ""))
+        </li>
+    }
+</ul>
+
+<p class="big-font">
+    Каждый метод жизненного цикла можно переопределить для реализации своей логики.
+</p>
+<div class="text-right">
+    <label>
+        <input type="checkbox" @onclick="ToggleRender" checked /> Should render
+    </label>
+</div>
+
+@code
+{
+    private List<InnerItem> InnerItems { get; set; }
+
+    private bool _shouldRender = true;
+
+    protected override void OnInitialized()
+    {
+        InnerItems = new List<InnerItem>();
+
+        InnerItems.Add(new InnerItem 
+        { 
+            Name = "OnInitialized()", 
+            Note = "Инициализация после получения параметров от родительского компонента.",
+            ShowAsync = true
+        });
+
+        InnerItems.Add(new InnerItem 
+        { 
+            Name = "SetParameters(ParameterView parameters)", 
+            Note = @"Вызывается перед установкой параметров. ParameterView содержит все значения, переданные компоненту через атрибуты Parameter и CascadingParameter.
+                     Если не вызывать base.SetParameters(parameters), можно интерпретировать входящие значения любым способом.",
+            ShowAsync = true
+        });
+
+        InnerItems.Add(new InnerItem 
+        { 
+            Name = "OnParametersSet()", 
+            Note = "Вызывается после установки параметров.",
+            ShowAsync = true
+        });
+
+        InnerItems.Add(new InnerItem 
+        { 
+            Name = "OnAfterRender(bool firstRender)", 
+            Note = "Вызывается после подготовки к просмотру. Подходящий момент для активации сторонних библиотек JS, которые работают с визуализированными элементами DOM.",
+            ShowAsync = true
+        });
+
+        InnerItems.Add(new InnerItem 
+        { 
+            Name = "ShouldRender()", 
+            Note = "Позволяет отключить обновление пользовательского интерфейса." 
+        });
+
+        InnerItems.Add(new InnerItem 
+        { 
+            Name = "StateHasChanged()", 
+            Note = "Вызывает переподготовку компонента." 
+        });
+    }
+
+    private void ShowNote(string name)
+    {
+        var item = InnerItems.First(x => x.Name == name);
+
+        item.ShowNote = !item.ShowNote;
+    }
+
+    protected override bool ShouldRender()
+    {
+        return _shouldRender;
+    }
+
+    private void ToggleRender()
+    {
+        _shouldRender = !_shouldRender;
+    }
+
+    private class InnerItem
+    {
+        public string Name { get; set; }
+
+        public string Note { get; set; }
+
+        public bool ShowNote { get; set; }
+
+        public bool ShowAsync { get; set; }
+    }
+}
