@@ -13,12 +13,12 @@ namespace itmhbw.Model
                 typeof(Greeting),
                 typeof(BlazorIntro),
                 typeof(ComponentPhys),
+                typeof(ComponentParameters),
+                typeof(ComponentUse),
                 typeof(ComponentLifeCycle),
-                typeof(ComponentCan),
+                typeof(BlazorTemplate),
                 typeof(ComponentDI),
-                typeof(ComponentSpread),
                 typeof(BlazorErrors),
-                typeof(BlazorProjectIs),
                 typeof(BlazorInitialization),
                 typeof(Ending)
             };
